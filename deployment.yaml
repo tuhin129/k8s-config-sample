@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flux-app
-        image: 1292003/shahidul:latest
+        image: nginx:latest
         ports:
         - containerPort: 8080
 
