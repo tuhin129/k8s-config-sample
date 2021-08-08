@@ -1,21 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flux-app
+  name: sample-app
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: flux-app
+      app: sample-app
   template:
     metadata:
       labels:
-        app: flux-app
+        app: sample-app
     spec:
       containers:
-      - name: flux-app
-        image: nginx:latest
+      - command:
+        - /app/sample-app
+        image: gitopsbook/sample-app:v0.1
+        name: sample-app
         ports:
         - containerPort: 8080
 
