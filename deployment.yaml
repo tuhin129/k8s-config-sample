@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
+  name: sample-app
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -14,7 +14,9 @@ spec:
         app: sample-app
     spec:
       containers:
-      - name: sample-app
-        image: 1292003/shahidul:latest
+      - command:
+        - /app/sample-app
+        image: gitopsbook/sample-app:v0.1
+        name: sample-app
         ports:
         - containerPort: 8080
